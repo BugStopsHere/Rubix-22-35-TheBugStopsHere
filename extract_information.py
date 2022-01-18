@@ -1,7 +1,7 @@
 import requests
 from urllib.parse import urlencode
 
-API_KEY = "AIzaSyB-BsREvkWKBFGRQWcmNtcES8k9WIArCnw"
+API_KEY = "YOUR_API_KEY"
 
 def extract_information(places_id: list) -> tuple[list, list, list, list]:
     """
