@@ -1,7 +1,7 @@
 import googlemaps
 
-gmaps = googlemaps.Client(key="AIzaSyB-BsREvkWKBFGRQWcmNtcES8k9WIArCnw")
-API_KEY = "AIzaSyB-BsREvkWKBFGRQWcmNtcES8k9WIArCnw"
+API_KEY = YOUR_API_KEY
+gmaps = googlemaps.Client(key=API_KEY)
 
 def find_lat_lng(location: str) -> tuple[float, float]:
     """
