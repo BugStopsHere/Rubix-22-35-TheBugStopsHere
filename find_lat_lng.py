@@ -1,6 +1,7 @@
 import googlemaps
-from app import API_KEY
+import os
 
+API_KEY = os.environ.get('API_KEY')
 gmaps = googlemaps.Client(key=API_KEY)
 
 
