@@ -1,6 +1,8 @@
 import requests
 from urllib.parse import urlencode
-from app import API_KEY
+import os
+
+API_KEY = os.environ.get('API_KEY')
 
 
 def extract_photo_references(places_id: list) -> list:
