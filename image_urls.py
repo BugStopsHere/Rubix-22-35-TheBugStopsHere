@@ -1,7 +1,8 @@
 import googlemaps
 from urllib.parse import urlencode
+from app import API_KEY
 
-API_KEY = "YOUR_API_KEY"
+
 gmaps = googlemaps.Client(key=API_KEY)
 
 
