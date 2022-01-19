@@ -1,16 +1,16 @@
 import requests
 from urllib.parse import urlencode
+from functools import lru_cache
+from app import API_KEY
 
-API_KEY = "YOUR_API_KEY"
 
-def extract_information(places_id: list) -> tuple[list, list, list, list]:
+@lru_cache(maxsize=10)
+def extract_information(places_id: list) -> list:
     """
-    Returns names, address ratings and phone number(if given) of all the places of which ids are given in places_id
+    Returns a list of dictionaries containing information about name, address,
+    rating and phone number
     """
-    names = []
-    addresses = []
-    ratings = []
-    phone_nos = []
+    info = []
     url_detail_endpoint = "https://maps.googleapis.com/maps/api/place/details/json"
 
     for place_id in places_id:
@@ -24,12 +24,9 @@ def extract_information(places_id: list) -> tuple[list, list, list, list]:
 
         r = requests.get(encoded_url_detail).json()
         res = r['result']
+        info_dict = {"name": res.get('name'), "rating": res.get('rating'),
+                     "address": res.get('formatted_address'),
+                     "phone_no": res.get('formatted_phone_number')}
+        info.append(info_dict)
 
-        names.append(res['name']) if "name" in res else None
-        ratings.append(res['rating']) if "rating" in res else None
-        addresses.append(res['formatted_address']
-                         ) if "formatted_address" in res else None
-        phone_nos.append(res['formatted_phone_number']
-                         ) if "formatted_phone_number" in res else None
-
-    return names, addresses, ratings, phone_nos
+    return info
