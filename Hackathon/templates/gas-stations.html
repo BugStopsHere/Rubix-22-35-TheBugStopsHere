@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Gas Stations</title>
+	<style type="text/css">
+		body{
+			color: white;
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	<h1 align="center">Gas Stations near me</h1>
+		{% for x in info %}
+			{% for key,val in x.items() %}
+				{% if key == "image" %}
+					
+				{% elif val != None and key != "rating"%}
+					<h2>{{key}}:</h2>
+					<p>{{val}}</p>
+				{% endif %}
+			{% endfor%}
+			<hr>
+		{% endfor %}
+</body>
+</html>

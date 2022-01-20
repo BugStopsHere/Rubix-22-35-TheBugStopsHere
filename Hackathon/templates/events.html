@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Events</title>
+    <style type="text/css">
+        body{
+            color: white;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 align="center">Events near me</h1>
+    {% for x in data %}
+        {% for key, val in x.items() %}
+            {% if key == "thumbnail" %}
+                
+            {% elif key == "ticket_info" %}
+            	<a href="{{val}}"><button>Buy Ticket</button></a>
+            {% elif val != None %}
+                <h2>{{key}}:</h1>
+                <p>{{val}}</p>
+            {% endif %}
+        {% endfor %}
+        <hr>
+    {% endfor %}
+
+</body>
+
+</html>

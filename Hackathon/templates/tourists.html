@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tourists</title>
+	<style type="text/css">
+		body{
+			color: white;
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	<h1 align="center">Tourist Places near me</h1>
+		{% for x in info %}
+			{% for key,val in x.items() %}
+				{% if key == "image" %}
+					<img src="{{val}}">
+				{% elif val != None %}
+					<h2>{{key}}:</h2>
+					<p>{{val}}</p>
+				{% endif %}
+			{% endfor%}
+			<hr>
+		{% endfor %}
+</body>
+</html>
